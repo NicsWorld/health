@@ -1,0 +1,62 @@
+<!doctype html>
+<title>Health</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+<div class="wrapper">
+    <div class="card">
+        <div class="site wicnoods.com">wicnoods.com: <span class="flex" id="wicnoods"></span></div>
+        <div class="site workout.lol">workout.lol: <span class="flex" id="workout"></span></div>
+        <div class="site dinner.dev">dinner.dev: <span class="flex" id="dinner"></span></div>
+    </div>
+</div>
+
+<script>
+    let wicnoods = document.getElementById("wicnoods");
+    let dinner = document.getElementById("dinner");
+    let workout = document.getElementById("workout");
+
+    setInterval(async function() {
+        await fetch('/api/wicnoods')
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                console.log(data);
+                let result = data.toString();
+                wicnoods.innerHTML = `<p class="healthy">Healthy</p> <p>${result.substring(0, 6)}</p>`;
+            } else {
+            wicnoods.innerHTML = "error!";
+        }
+        })
+    }, 5000);
+
+    setInterval(async function() {
+        await fetch('/api/dinner')
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                let result = data.toString();
+                dinner.innerHTML = `<p class="healthy flex">Healthy</p> <p>${result.substring(0, 6)}</p>`;
+            } else {
+                dinner.innerHTML = "error!";
+        }
+        })
+    }, 5000);
+
+    setInterval(async function() {
+        await fetch('/api/workout')
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                let result = data.toString();
+                workout.innerHTML = `<p class="healthy flex">Healthy</p> <p>${new String(result.substring(0, 6))}</p>`;
+            } else {
+                workout.innerHTML = "error!";
+        }
+        })
+    }, 5000);
+
+
+    
+</script>

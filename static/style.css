@@ -1,0 +1,48 @@
+body {
+    margin: auto;
+}
+.wrapper {
+    height: 100vh;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.site {
+    color: #000;
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: 220px auto;
+    align-items: center;
+    font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+    .site {
+        color: #000;
+        margin: 1rem 0;
+        display: grid;
+        grid-template-columns: 405px auto;
+        align-items: center;
+        font-size: 63px;
+        font-weight: bold;
+    }
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
+.healthy {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #98FB98;
+    color: #000;
+}
